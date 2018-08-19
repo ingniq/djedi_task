@@ -1,0 +1,6 @@
+/.idea/
+.docker-sync/
+/test/
+/db/
+/app/
+!/app/modules/
