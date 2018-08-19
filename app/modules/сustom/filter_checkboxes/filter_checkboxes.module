@@ -1,0 +1,23 @@
+<?php
+/**
+ * @file
+ * Contains main functions related the checkboxes filters.
+ */
+
+/**
+ * Implements hook_theme_registry_alter().
+ */
+function filter_checkboxes_theme_registry_alter(&$theme_registry) {
+  $theme_registry['checkboxes']['preprocess functions'][] = 'filter_checkboxes_checkboxes_preprocess';
+}
+
+/**
+ * Preprocess for the theme_checkboxes theming.
+ */
+function filter_checkboxes_checkboxes_preprocess(&$variables) {
+  $element = &$variables['element'];
+  if (!empty($element['#filter'])) {
+    drupal_add_js(drupal_get_path('module', 'filter_checkboxes') . '/filter_checkboxes.js');
+    $element['#attributes']['class'][] = 'checkboxes-filter-element';
+  }
+}
