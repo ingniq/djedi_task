@@ -1,0 +1,6 @@
+name: Form With Checkboxes Module
+description: Create a page with a test form that contains checkboxes.
+package: Custom
+type: module
+version: 1.0
+core: 8.x

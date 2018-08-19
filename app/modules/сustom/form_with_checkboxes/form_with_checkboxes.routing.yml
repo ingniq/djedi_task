@@ -1,0 +1,7 @@
+hello.content:
+  path: '/test'
+  defaults:
+    _form: '\Drupal\form_with_checkboxes\Form\FormWithCheckboxes'
+    _title: 'Form With Checkboxes'
+  requirements:
+    _permission: 'access content'
