@@ -6,18 +6,21 @@
 
 /**
  * Implements hook_theme_registry_alter().
+ *
+ * @param $theme_registry
  */
 function filter_checkboxes_theme_registry_alter(&$theme_registry) {
-  $theme_registry['checkboxes']['preprocess functions'][] = 'filter_checkboxes_checkboxes_preprocess';
+  $theme_registry['checkboxes']['preprocess functions'][] = 'filter_checkboxes_preprocess_checkboxes';
 }
 
 /**
  * Preprocess for the theme_checkboxes theming.
+ *
+ * @param $variables
  */
-function filter_checkboxes_checkboxes_preprocess(&$variables) {
-  $element = &$variables['element'];
-  if (!empty($element['#filter'])) {
-    drupal_add_js(drupal_get_path('module', 'filter_checkboxes') . '/filter_checkboxes.js');
-    $element['#attributes']['class'][] = 'checkboxes-filter-element';
+function filter_checkboxes_preprocess_checkboxes(&$variables) {
+  if (!empty($variables['element']['#filter'])) {
+    $variables['attributes']['class'][] = 'checkboxes-filter-element';
+    $variables['#attached']['library'][] = 'filter_checkboxes/filter-checkboxes-js';
   }
 }
